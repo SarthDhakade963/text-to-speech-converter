@@ -10,6 +10,11 @@ const pitchValue = document.querySelector("pitchValue");
 const volumeValue = document.querySelector("volumeValue");
 const rateValue = document.querySelector("rateValue");
 
+const speakBtn = document.querySelector("speakBtn");
+const resumeBtn = document.querySelector("resumeBtn");
+const pauseBtn = document.querySelector("pauseBtn");
+const stopBtn = document.querySelector("stopBtn");
+
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
   if (!voices.length) return;
@@ -37,7 +42,8 @@ volumeRange.addEventListener("input", () => {
   volumeRange.textContent = volumeRange.value;
 });
 
-document.querySelector("button").addEventListener("click", () => {
+// Voice controller implement
+speakBtn.addEventListener("click", () => {
   const text = document.querySelector("textarea").value.trim();
   if (!text) alert("Please enter some text");
 
@@ -47,7 +53,22 @@ document.querySelector("button").addEventListener("click", () => {
   speech.rate = parseFloat(rateRange.value);
   speech.volume = parseFloat(volumeRange.value);
 
-
-  window.speechSynthesis.cancel(); // block any ongoing voice 
+  window.speechSynthesis.cancel(); // block any ongoing voice
   window.speechSynthesis.speak(speech);
+});
+
+pauseBtn.addEventListener("click", () => {
+  if (window.speechSynthesis.speaking && !window.speechSynthesis.paused) {
+    window.speechSynthesis.pause();
+  }
+});
+
+resumeBtn.addEventListener("click", () => {
+  if (window.speechSynthesis.pause) {
+    window.speechSynthesis.resume();
+  }
+});
+
+stopBtn.addEventListener("click", () => {
+  window.speechSynthesis.cancel();
 });

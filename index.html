@@ -20,12 +20,18 @@
     <div class="container">
         <textarea placeholder="Write anything here..."></textarea>
 
+        <div class="voice-controller-box">
+            <button class="controllerBtn" id="speakBtn">Speak</button>
+            <button class="controllerBtn" id="pauseBtn">Pause</button>
+            <button class="controllerBtn" id="resumeBtn">Resume</button>
+            <button class="controllerBtn" id="stopBtn">Stop</button>
+        </div>
+
         <div class="voice-list">
             <label for="listOpt"></label>
             <select name="dropdown" id="listOpt" aria-label="Choose a Voice">
                 <option value="" disabled selected>Select Voice</option>
             </select>
-            <button class="listen-btn"><i class="fa-solid fa-play"></i> Listen</button>
         </div>
     </div>
 
