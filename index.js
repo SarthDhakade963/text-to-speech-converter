@@ -2,18 +2,18 @@ let speech = new SpeechSynthesisUtterance();
 let voices = [];
 let voiceSelect = document.querySelector("select");
 
-const pitchRange = document.querySelector("pitchRange");
-const volumeRange = document.querySelector("volumeRange");
-const rateRange = document.querySelector("rateRange");
+const pitchRange = document.querySelector("#pitchRange");
+const volumeRange = document.querySelector("#volumeRange");
+const rateRange = document.querySelector("#rateRange");
 
-const pitchValue = document.querySelector("pitchValue");
-const volumeValue = document.querySelector("volumeValue");
-const rateValue = document.querySelector("rateValue");
+const pitchValue = document.querySelector("#pitchValue");
+const volumeValue = document.querySelector("#volumeValue");
+const rateValue = document.querySelector("#rateValue");
 
-const speakBtn = document.querySelector("speakBtn");
-const resumeBtn = document.querySelector("resumeBtn");
-const pauseBtn = document.querySelector("pauseBtn");
-const stopBtn = document.querySelector("stopBtn");
+const speakBtn = document.querySelector(".speakBtn");
+const resumeBtn = document.querySelector(".resumeBtn");
+const pauseBtn = document.querySelector(".pauseBtn");
+const stopBtn = document.querySelector(".stopBtn");
 
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
@@ -39,7 +39,7 @@ rateRange.addEventListener("input", () => {
 });
 
 volumeRange.addEventListener("input", () => {
-  volumeRange.textContent = volumeRange.value;
+  volumeValue.textContent = volumeRange.value;
 });
 
 // Voice controller implement
@@ -64,7 +64,7 @@ pauseBtn.addEventListener("click", () => {
 });
 
 resumeBtn.addEventListener("click", () => {
-  if (window.speechSynthesis.pause) {
+  if (window.speechSynthesis.paused) {
     window.speechSynthesis.resume();
   }
 });
