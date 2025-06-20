@@ -11,11 +11,14 @@ const resumeBtn = document.querySelector("#resumeBtn");
 const pauseBtn = document.querySelector("#pauseBtn");
 const stopBtn = document.querySelector("#stopBtn");
 
+
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
+  if(!voices) console.log("Voices not loaded");
   if (!voices.length) return;
 
   speech.voice = voices[0];
+
   voices.forEach(
     (voice, i) => (voiceSelect.options[i] = new Option(voice.name, i))
   );
@@ -25,33 +28,23 @@ voiceSelect.addEventListener("change", () => {
   speech.voice = voices[voiceSelect.value];
 });
 
-// // Update displayed values
-// pitchRange.addEventListener("input", () => {
-//   pitchValue.textContent = pitchRange.value;
-// });
-
-// rateRange.addEventListener("input", () => {
-//   rateValue.textContent = rateRange.value;
-// });
-
-// volumeRange.addEventListener("input", () => {
-//   volumeValue.textContent = volumeRange.value;
-// });
-
 // Voice controller implement
 speakBtn.addEventListener("click", () => {
-  const text = document.querySelector("textarea").value.trim();
-  if (!text) alert("Please enter some text");
+  const text = document.querySelector("textarea").value;
+
+  if (!text) return alert("Please enter some text");
+  if (!voices.length) return alert("Voices not loaded yet. Please wait.");
 
   console.log("Speaking:", text);
 
   speech.text = text;
   speech.voice = voices[voiceSelect.value];
+  
   speech.pitch = parseFloat(pitchRange.value);
   speech.rate = parseFloat(rateRange.value);
   speech.volume = parseFloat(volumeRange.value);
 
-  window.speechSynthesis.cancel(); // block any ongoing voice
+  window.speechSynthesis.cancel(); // block any current speech
   window.speechSynthesis.speak(speech);
 });
 

@@ -92,7 +92,6 @@ textarea::-webkit-input-placeholder {
   bottom: 0;
 }
 
-
 #listOpt:hover {
   cursor: pointer;
 }
@@ -125,7 +124,7 @@ textarea::-webkit-input-placeholder {
   left: 18%;
 }
 
-button {
+.controllerBtn {
   margin-right: 20px;
   bottom: 0;
   right: 0;
@@ -137,9 +136,16 @@ button {
   border: 0;
   outline: 0;
   font-size: 12.5px;
-  cursor : pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index : 9999;
 }
 
 .controllerBtn:hover {
-  cursor: pointer;
+  background: #ff6384;
+  transform: scale(1.1);
+}
+
+.controllerBtn:active {
+  background: #c9184a;
+  transform: scale(0.95);
 }
