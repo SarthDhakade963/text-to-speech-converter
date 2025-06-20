@@ -92,9 +92,6 @@ textarea::-webkit-input-placeholder {
   bottom: 0;
 }
 
-button:hover {
-  cursor: pointer;
-}
 
 #listOpt:hover {
   cursor: pointer;
@@ -128,7 +125,7 @@ button:hover {
   left: 18%;
 }
 
-.controllerBtn {
+button {
   margin-right: 20px;
   bottom: 0;
   right: 0;
@@ -140,5 +137,9 @@ button:hover {
   border: 0;
   outline: 0;
   font-size: 12.5px;
-  pointer: cursor;
+  cursor : pointer;
+}
+
+.controllerBtn:hover {
+  cursor: pointer;
 }

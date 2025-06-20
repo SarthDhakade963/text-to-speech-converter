@@ -6,14 +6,10 @@ const pitchRange = document.querySelector("#pitchRange");
 const volumeRange = document.querySelector("#volumeRange");
 const rateRange = document.querySelector("#rateRange");
 
-const pitchValue = document.querySelector("#pitchValue");
-const volumeValue = document.querySelector("#volumeValue");
-const rateValue = document.querySelector("#rateValue");
-
-const speakBtn = document.querySelector(".speakBtn");
-const resumeBtn = document.querySelector(".resumeBtn");
-const pauseBtn = document.querySelector(".pauseBtn");
-const stopBtn = document.querySelector(".stopBtn");
+const speakBtn = document.querySelector("#speakBtn");
+const resumeBtn = document.querySelector("#resumeBtn");
+const pauseBtn = document.querySelector("#pauseBtn");
+const stopBtn = document.querySelector("#stopBtn");
 
 window.speechSynthesis.onvoiceschanged = () => {
   voices = window.speechSynthesis.getVoices();
@@ -29,23 +25,25 @@ voiceSelect.addEventListener("change", () => {
   speech.voice = voices[voiceSelect.value];
 });
 
-// Update displayed values
-pitchRange.addEventListener("input", () => {
-  pitchValue.textContent = pitchRange.value;
-});
+// // Update displayed values
+// pitchRange.addEventListener("input", () => {
+//   pitchValue.textContent = pitchRange.value;
+// });
 
-rateRange.addEventListener("input", () => {
-  rateValue.textContent = rateRange.value;
-});
+// rateRange.addEventListener("input", () => {
+//   rateValue.textContent = rateRange.value;
+// });
 
-volumeRange.addEventListener("input", () => {
-  volumeValue.textContent = volumeRange.value;
-});
+// volumeRange.addEventListener("input", () => {
+//   volumeValue.textContent = volumeRange.value;
+// });
 
 // Voice controller implement
 speakBtn.addEventListener("click", () => {
   const text = document.querySelector("textarea").value.trim();
   if (!text) alert("Please enter some text");
+
+  console.log("Speaking:", text);
 
   speech.text = text;
   speech.voice = voices[voiceSelect.value];
